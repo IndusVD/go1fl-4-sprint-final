@@ -34,6 +34,9 @@ func parsePackage(data string) (int, time.Duration, error) {
 	if err != nil {
 		return 0, 0, fmt.Errorf("Неверный тип данных: %w", err)
 	}
+	if duration <= 0 {
+		return 0, 0, fmt.Errorf("Продолжительность должна быть больше 0")
+	}
 	return steps, duration, nil
 }
 
