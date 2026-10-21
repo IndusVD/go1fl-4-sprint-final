@@ -28,6 +28,9 @@ func parseTraining(data string) (int, string, time.Duration, error) {
 	if err != nil {
 		return 0, "", 0, fmt.Errorf("Неверный тип данных: %w", err)
 	}
+	if steps <= 0 {
+		return 0, "", 0, fmt.Errorf("Количество шагов должно быть больше 0")
+	}
 	activity := parts[1]
 	duration, err := time.ParseDuration(parts[2])
 	if err != nil {
